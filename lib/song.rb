@@ -5,18 +5,35 @@ class Song
   def initialize(name)
     @name = name
   end
-
-  def self.new_by_filename(filename)
-    artist, song = filename.split(" - ")
+ def self.new_by_filename(filename)
+    parts = filename.split(" - ")
     new_song = self.new(song)
     new_song.artist_name = artist
-    new_song
-  end
+    new_song.save
+    
+  #   def self.new_by_filename(filename)
+  #   parts = filename.split(" - ")
+  #   artist_name = parts[0]
+  #   song_name = parts[1].gsub(".mp3", "")
 
-  def artist_name=(name)
-    self.artist = Artist.find_or_create_by_name(name)
-    artist.add_song(self)
-  end
+  #   song = Song.new(song)
+  #   song.name = song_name
+  #   song.artist_name = artist
+  #   song
+    
+  # end
+  
+  # def self.new_by_filename(filename)
+  #   artist, song = filename.split(" - ")
+  #   new_song = self.new(song)
+  #   new_song.artist_name = artist
+  #   new_song
+  # end
+
+  # def artist_name=(name)
+  #   self.artist = Artist.find_or_create_by_name(name)
+  #   artist.add_song(self)
+  # end
 end
 # require 'pry'
 # class Song
@@ -52,23 +69,23 @@ end
     
 #   end
 
-  def self.new_by_filename(filename)
-    parts = filename.split(" - ")
-    new_song = self.new(song)
-    new_song.artist_name = artist
-    new_song.save
+  # def self.new_by_filename(filename)
+  #   parts = filename.split(" - ")
+  #   new_song = self.new(song)
+  #   new_song.artist_name = artist
+  #   new_song.save
     
-    def self.new_by_filename(filename)
-    parts = filename.split(" - ")
-    artist_name = parts[0]
-    song_name = parts[1].gsub(".mp3", "")
+  #   def self.new_by_filename(filename)
+  #   parts = filename.split(" - ")
+  #   artist_name = parts[0]
+  #   song_name = parts[1].gsub(".mp3", "")
 
-    song = Song.new(song)
-    song.name = song_name
-    song.artist_name = artist
-    song
+  #   song = Song.new(song)
+  #   song.name = song_name
+  #   song.artist_name = artist
+  #   song
     
-  end
+  # end
   
 
 #   def self.find_by_artist(artist)
